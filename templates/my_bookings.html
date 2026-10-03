@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Bookings</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+
+    <h1>My Bookings</h1>
+
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>My Booking History</h2>
+
+        {% if bookings %}
+
+        <table>
+
+            <tr>
+                <th>Equipment</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Purpose</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            {% for booking in bookings %}
+
+            <tr>
+
+                <td>
+                    {{ booking["equipment"] }}
+                </td>
+
+                <td>
+                    {{ booking["date"] }}
+                </td>
+
+                <td>
+                    {{ booking["start_time"] }}
+                </td>
+
+                <td>
+                    {{ booking["end_time"] }}
+                </td>
+
+                <td>
+                    {{ booking["purpose"] }}
+                </td>
+
+                <td>
+                    {{ booking["status"] }}
+                </td>
+
+                <td>
+
+                    {% if booking["status"] == "Pending" %}
+
+                    <a href="/cancel-booking/{{ booking['id'] }}">
+
+                        <button class="danger">
+                            Cancel
+                        </button>
+
+                    </a>
+
+                    {% else %}
+
+                    -
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>
+            You have no bookings yet.
+        </p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/book-equipment">
+            <button>
+                Book Equipment
+            </button>
+        </a>
+
+        <a href="/student-dashboard">
+            <button>
+                Back to Dashboard
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

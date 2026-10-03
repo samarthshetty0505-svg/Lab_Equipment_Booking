@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Online Lab Equipment Booking System</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Online Lab Equipment Booking System</h1>
+    <p>Laboratory Equipment Booking Management</p>
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Welcome to the Laboratory</h2>
+
+        <p>
+            Book laboratory equipment easily and
+            check its availability online.
+        </p>
+
+        <h3>Student</h3>
+
+        <div class="buttons">
+
+            <a href="/student-login">
+                <button>Student Login</button>
+            </a>
+
+            <a href="/student-register">
+                <button>Student Registration</button>
+            </a>
+
+        </div>
+
+        <h3>Laboratory Staff</h3>
+
+        <div class="buttons">
+
+            <a href="/staff-login">
+                <button>Staff Login</button>
+            </a>
+
+        </div>
+
+        <h3>Administrator</h3>
+
+        <div class="buttons">
+
+            <a href="/admin-login">
+                <button>Admin Login</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>Online Lab Equipment Booking System</p>
+</div>
+
+</body>
+</html>

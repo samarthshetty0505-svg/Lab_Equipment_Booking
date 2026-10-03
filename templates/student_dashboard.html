@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+
+    <h1>Student Dashboard</h1>
+
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Welcome, {{ student_id }}</h2>
+
+        <p>
+            What would you like to do?
+        </p>
+
+        <div class="buttons">
+
+            <a href="/equipment">
+                <button>
+                    View Equipment
+                </button>
+            </a>
+
+            <a href="/book-equipment">
+                <button>
+                    Book Equipment
+                </button>
+            </a>
+
+            <a href="/my-bookings">
+                <button>
+                    My Bookings
+                </button>
+            </a>
+
+            <a href="/my-bookings">
+                <button class="danger">
+                    Cancel Booking
+                </button>
+            </a>
+
+            <a href="/logout">
+                <button class="danger">
+                    Logout
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

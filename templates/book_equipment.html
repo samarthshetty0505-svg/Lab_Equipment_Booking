@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Book Equipment</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Book Laboratory Equipment</h1>
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Equipment Booking Form</h2>
+
+        <form method="POST">
+
+            <p>
+
+                <label>Student ID</label><br>
+
+                <input type="text"
+                       value="{{ student_id }}"
+                       readonly>
+
+            </p>
+
+
+            <p>
+
+                <label>Select Equipment</label><br>
+
+                <select name="equipment" required>
+
+                    <option value="">
+                        -- Select Equipment --
+                    </option>
+
+                    {% for item in equipment_list %}
+
+                    <option value="{{ item['name'] }}">
+
+                        {{ item["name"] }}
+                        -
+                        {{ item["available"] }}
+                        available
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </p>
+
+
+            <p>
+
+                <label>Date</label><br>
+
+                <input type="date"
+                       name="date"
+                       required>
+
+            </p>
+
+
+            <p>
+
+                <label>Start Time</label><br>
+
+                <input type="time"
+                       name="start_time"
+                       required>
+
+            </p>
+
+
+            <p>
+
+                <label>End Time</label><br>
+
+                <input type="time"
+                       name="end_time"
+                       required>
+
+            </p>
+
+
+            <p>
+
+                <label>Purpose</label><br>
+
+                <textarea name="purpose"
+                          rows="4"
+                          placeholder="Enter purpose of booking"
+                          required></textarea>
+
+            </p>
+
+
+            <button type="submit">
+                Submit Booking
+            </button>
+
+        </form>
+
+
+        {% if message %}
+
+        <p class="success">
+            {{ message }}
+        </p>
+
+        {% endif %}
+
+
+        {% if error %}
+
+        <p class="error">
+            {{ error }}
+        </p>
+
+        {% endif %}
+
+
+        <br>
+
+        <a href="/student-dashboard">
+            <button>
+                Back to Dashboard
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

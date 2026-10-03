@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lab Equipment</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Laboratory Equipment</h1>
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Equipment Availability</h2>
+
+        <table>
+
+            <tr>
+                <th>Equipment</th>
+                <th>Total Quantity</th>
+                <th>Available</th>
+                <th>Status</th>
+            </tr>
+
+            {% for item in equipment_list %}
+
+            <tr>
+
+                <td>{{ item["name"] }}</td>
+
+                <td>{{ item["quantity"] }}</td>
+
+                <td>{{ item["available"] }}</td>
+
+                <td>
+
+                    {% if item["available"] > 0 %}
+
+                    <span class="available">
+                        Available
+                    </span>
+
+                    {% else %}
+
+                    <span class="unavailable">
+                        Not Available
+                    </span>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <br>
+
+        <a href="/student-dashboard">
+            <button>
+                Back to Dashboard
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+
+    <h1>Administrator Dashboard</h1>
+
+</div>
+
+<div class="container">
+
+
+    <!-- STUDENTS -->
+
+    <div class="card">
+
+        <h2>Registered Students</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Student ID</th>
+            </tr>
+
+            {% for student in students %}
+
+            <tr>
+
+                <td>
+                    {{ student["id"] }}
+                </td>
+
+                <td>
+                    {{ student["student_id"] }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+
+    <!-- EQUIPMENT -->
+
+    <div class="card">
+
+        <h2>Equipment Management</h2>
+
+        <form method="POST"
+              action="/add-equipment">
+
+            <p>
+
+                <input type="text"
+                       name="name"
+                       placeholder="Equipment name"
+                       required>
+
+            </p>
+
+            <p>
+
+                <input type="number"
+                       name="quantity"
+                       placeholder="Quantity"
+                       min="1"
+                       required>
+
+            </p>
+
+            <button type="submit">
+                Add Equipment
+            </button>
+
+        </form>
+
+
+        <table>
+
+            <tr>
+                <th>Equipment</th>
+                <th>Total</th>
+                <th>Available</th>
+                <th>Action</th>
+            </tr>
+
+            {% for item in equipment_list %}
+
+            <tr>
+
+                <td>
+                    {{ item["name"] }}
+                </td>
+
+                <td>
+                    {{ item["quantity"] }}
+                </td>
+
+                <td>
+                    {{ item["available"] }}
+                </td>
+
+                <td>
+
+                    <a href="/delete-equipment/{{ item['id'] }}">
+
+                        <button class="danger">
+                            Delete
+                        </button>
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+
+    <!-- BOOKINGS -->
+
+    <div class="card">
+
+        <h2>All Bookings</h2>
+
+        <table>
+
+            <tr>
+                <th>Student</th>
+                <th>Equipment</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+
+            {% for booking in bookings %}
+
+            <tr>
+
+                <td>
+                    {{ booking["student_id"] }}
+                </td>
+
+                <td>
+                    {{ booking["equipment"] }}
+                </td>
+
+                <td>
+                    {{ booking["date"] }}
+                </td>
+
+                <td>
+                    {{ booking["status"] }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+
+    <a href="/logout">
+
+        <button class="danger">
+            Logout
+        </button>
+
+    </a>
+
+</div>
+
+</body>
+</html>

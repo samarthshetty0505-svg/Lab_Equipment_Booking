@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Staff Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Laboratory Staff Login</h1>
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Staff Login</h2>
+
+        <form method="POST">
+
+            <p>
+
+                <label>Username</label><br>
+
+                <input type="text"
+                       name="username"
+                       placeholder="Enter Username"
+                       required>
+
+            </p>
+
+            <p>
+
+                <label>Password</label><br>
+
+                <input type="password"
+                       name="password"
+                       placeholder="Enter Password"
+                       required>
+
+            </p>
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        {% if message %}
+
+        <p class="error">
+            {{ message }}
+        </p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/">
+            <button>
+                Back to Home
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
